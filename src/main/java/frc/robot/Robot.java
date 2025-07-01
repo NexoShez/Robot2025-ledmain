@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.Commands.LEDXtras;
 // import frc.robot.Constants.LEDsC;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Intake;
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
   private LEDs leds;
   private Intake intake;
   private Claw claw;
+  private LEDXtras ledx;
   // private Lift lift;
 
   /**
@@ -45,6 +47,7 @@ public class Robot extends TimedRobot {
     leds = m_robotContainer.getLEDS();
     intake = m_robotContainer.getInt();
     claw = m_robotContainer.getClaw();
+    ledx= new LEDXtras(leds);
     // lift = m_robotContainer.getLift();
   }
 

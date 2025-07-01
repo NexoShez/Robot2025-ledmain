@@ -281,8 +281,8 @@ public final class Constants {
 
     public static final Map<Number, Color> kMaskSteps = Map.of(0, Color.kWhite, 0.5, Color.kBlack);
 
-    public static final LEDPattern kDisabledPattern = LEDPattern.steps(Map.of(0, kSOTAbotYellow, 0.5, Color.kBlack)).scrollAtRelativeSpeed(Percent.per(Second).of(75));
-    public static final LEDPattern kDisabledPatternRev = LEDPattern.steps(Map.of(0, kSOTAbotYellow, 0.5, Color.kBlack)).scrollAtRelativeSpeed(Percent.per(Second).of(75)).reversed();
+    public static final LEDPattern kDisabledPattern = LEDPattern.steps(Map.of(0, kSOTAbotYellow, 0.5, Color.kBlack)).scrollAtRelativeSpeed(Percent.per(Second).of(100));
+    public static final LEDPattern kDisabledPatternRev = LEDPattern.steps(Map.of(0, kSOTAbotYellow, 0.5, Color.kBlack)).scrollAtRelativeSpeed(Percent.per(Second).of(100)).reversed();
     public static final LEDPattern kIdlePattern = LEDPattern.solid(kIdle);
     public static final LEDPattern kAutoIdlePattern = LEDPattern.steps(kMaskSteps).scrollAtRelativeSpeed(Percent.per(Second).of(1.25));
     
@@ -292,7 +292,7 @@ public final class Constants {
     public static final LEDPattern kCoralPattern = LEDPattern.solid(kCoral).breathe(Seconds.of(75));
     public static final LEDPattern kAlgaePattern = LEDPattern.solid(kAlgae).breathe(Seconds.of(75));
     public static final LEDPattern kCoralFLASHPattern = LEDPattern.gradient(GradientType.kContinuous ,kCoral, kLimitSwitchHit).blink(Seconds.of(75));
-    public static final LEDPattern kAlgaeFLASHPattern = LEDPattern.gradient(GradientType.kContinuous ,kAlgae, kLimitSwitchHit).blink(Seconds.of(75));
+    public static final LEDPattern kAlgaeFLASHPattern = LEDPattern.gradient(GradientType.kContinuous ,kAlgae, kLimitSwitchHit).blink(Seconds.of(75)).reversed();
 
     public static final LEDPattern kLSHPattern = LEDPattern.steps(Map.of( //limit swsitch hit
       0, Color.kGreen,

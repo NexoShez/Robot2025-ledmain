@@ -4,7 +4,7 @@
 
 package frc.robot.subsystems;
 
-import static edu.wpi.first.units.Units.Seconds;
+// import static edu.wpi.first.units.Units.Seconds;
 
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
@@ -34,6 +34,7 @@ public class LEDs extends SubsystemBase {
   final int setMin = 0;
 
   boolean rev = false;
+  private long startTime = System.currentTimeMillis();
 
   private LEDPattern changablePattern;
 
@@ -48,13 +49,13 @@ public class LEDs extends SubsystemBase {
     // disabled.applyTo(buffer);
     led.start();
 
-    for (Seconds.of(75);;) {
-      if (!rev) {
-        rev = true;
-      } else {
-      rev = false;
-      }
-    }
+    // for (Seconds.of(1);;) {
+    //   if (!rev) {
+    //     rev = true;
+    //   } else {
+    //   rev = false;
+    //   }
+    // }
     
     // progress = LEDPattern.progressMaskLayer(() -> controller.getLeftY()/ -1);
     // progressMask = progress.mask(LEDPattern.solid(Color.kAntiqueWhite));
@@ -75,12 +76,12 @@ public class LEDs extends SubsystemBase {
    */
   public void setDisabled() {
     // led.close();
-    // LEDsC.kDisabledPattern.applyTo(buffer);
+    LEDsC.kDisabledPattern.applyTo(buffer);
 
     if (rev == false) {
-      LEDsC.kDisabledPattern.applyTo(buffer);
+      // LEDsC.kDisabledPattern.applyTo(buffer);
     } else {
-      LEDsC.kDisabledPatternRev.applyTo(buffer);
+      // LEDsC.kDisabledPattern.reversed().applyTo(buffer);
     }
     // led.start();
   } 
@@ -161,11 +162,26 @@ public class LEDs extends SubsystemBase {
     setPattern(LEDsC.kAlgaePattern, LEDsC.kAlgaeV);
   }
 
+  public double setReverse() {
+    long diffMilliseconds = System.currentTimeMillis() - startTime;
+    int numSeconds = (int)diffMilliseconds / 1000;
+    int amtWood = numSeconds/1;
+    return amtWood;
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     led.setData(buffer);
 
-    SmartDashboard.putNumber("TELEOP SET", set);
+    // SmartDashboard.putNumber("TELEOP SET", set);
+    SmartDashboard.putBoolean("robot led reverse", rev);
+
+    if (setReverse() % 2 == 0) {
+      //even
+      rev=true;
+    } else {
+      rev=false;
+    }
   }
 }

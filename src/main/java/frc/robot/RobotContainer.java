@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import frc.robot.Constants.LiftConstants;
 import frc.robot.Constants.OIConstants;
 
 import frc.robot.subsystems.DriveSubsystem;
@@ -244,50 +244,50 @@ public class RobotContainer {
 
 
                 //arm score algea
-                m_manipulatorController.povUp().onTrue(new LiftAndArmMove(m_lift, m_arm,
-                Constants.LiftConstants.LiftHeight.kPositionBarge,
-                Constants.ArmConstants.ArmPostion.kPosistionBarge))
-                .onFalse(new LiftAndArmMove(m_lift, m_arm,
-                Constants.LiftConstants.LiftHeight.kPositionResting,
-                Constants.ArmConstants.ArmPostion.kPositionResting));
+                // m_manipulatorController.povUp().onTrue(new LiftAndArmMove(m_lift, m_arm,
+                // Constants.LiftConstants.LiftHeight.kPositionBarge,
+                // Constants.ArmConstants.ArmPostion.kPosistionBarge))
+                // .onFalse(new LiftAndArmMove(m_lift, m_arm,
+                // Constants.LiftConstants.LiftHeight.kPositionResting,
+                // Constants.ArmConstants.ArmPostion.kPositionResting));
 
-                //arm score algea
-                m_manipulatorController.leftStick().onTrue(new LiftAndArmMove(m_lift, m_arm,
-                                Constants.LiftConstants.LiftHeight.kPositionHolding,
-                                Constants.ArmConstants.ArmPostion.kPosistionBarge))
-                                .onFalse(new LiftAndArmMove(m_lift, m_arm,
-                                Constants.LiftConstants.LiftHeight.kPositionHolding,
-                                Constants.ArmConstants.ArmPostion.kPosistionBarge));
+                // //arm score algea
+                // m_manipulatorController.leftStick().onTrue(new LiftAndArmMove(m_lift, m_arm,
+                //                 Constants.LiftConstants.LiftHeight.kPositionHolding,
+                //                 Constants.ArmConstants.ArmPostion.kPosistionBarge))
+                //                 .onFalse(new LiftAndArmMove(m_lift, m_arm,
+                //                 Constants.LiftConstants.LiftHeight.kPositionHolding,
+                //                 Constants.ArmConstants.ArmPostion.kPosistionBarge));
 
-                // arm pickup algea l3
-                m_manipulatorController.povRight().onTrue(new LiftAndArmMove(m_lift, m_arm,
-                Constants.LiftConstants.LiftHeight.kPositionL3,
-                Constants.ArmConstants.ArmPostion.kPositionResting).withTimeout(.5)
-                .andThen(new LiftAndArmMove(m_lift, m_arm,
-                Constants.LiftConstants.LiftHeight.kPositionL3,
-                Constants.ArmConstants.ArmPostion.kPosistionL3)).alongWith(
-                new RunCommand(() -> m_claw.setVoltage(5),m_claw)
-                ))
-                .onFalse(new LiftAndArmMove(m_lift, m_arm,
-                Constants.LiftConstants.LiftHeight.kPositionResting,
-                Constants.ArmConstants.ArmPostion.kPositionResting).alongWith(
-                new RunCommand(() -> m_claw.setVoltage(0),m_claw)
-                ));
+                // // arm pickup algea l3
+                // m_manipulatorController.povRight().onTrue(new LiftAndArmMove(m_lift, m_arm,
+                // Constants.LiftConstants.LiftHeight.kPositionL3,
+                // Constants.ArmConstants.ArmPostion.kPositionResting).withTimeout(.5)
+                // .andThen(new LiftAndArmMove(m_lift, m_arm,
+                // Constants.LiftConstants.LiftHeight.kPositionL3,
+                // Constants.ArmConstants.ArmPostion.kPosistionL3)).alongWith(
+                // new RunCommand(() -> m_claw.setVoltage(5),m_claw)
+                // ))
+                // .onFalse(new LiftAndArmMove(m_lift, m_arm,
+                // Constants.LiftConstants.LiftHeight.kPositionResting,
+                // Constants.ArmConstants.ArmPostion.kPositionResting).alongWith(
+                // new RunCommand(() -> m_claw.setVoltage(0),m_claw)
+                // ));
 
-                //arm pickup algea l2
-                m_manipulatorController.povLeft().onTrue(new LiftAndArmMove(m_lift, m_arm,
-                Constants.LiftConstants.LiftHeight.kPositionL2,
-                Constants.ArmConstants.ArmPostion.kPositionResting).withTimeout(.25)
-                .andThen(new LiftAndArmMove(m_lift, m_arm,
-                Constants.LiftConstants.LiftHeight.kPositionL2,
-                Constants.ArmConstants.ArmPostion.kPositionL2)).alongWith(
-                new RunCommand(() -> m_claw.setVoltage(5),m_claw)
-                ))
-                .onFalse(new LiftAndArmMove(m_lift, m_arm,
-                Constants.LiftConstants.LiftHeight.kPositionResting,
-                Constants.ArmConstants.ArmPostion.kPositionResting).alongWith(
-                new RunCommand(() -> m_claw.setVoltage(0),m_claw)
-                ));
+                // //arm pickup algea l2
+                // m_manipulatorController.povLeft().onTrue(new LiftAndArmMove(m_lift, m_arm,
+                // Constants.LiftConstants.LiftHeight.kPositionL2,
+                // Constants.ArmConstants.ArmPostion.kPositionResting).withTimeout(.25)
+                // .andThen(new LiftAndArmMove(m_lift, m_arm,
+                // Constants.LiftConstants.LiftHeight.kPositionL2,
+                // Constants.ArmConstants.ArmPostion.kPositionL2)).alongWith(
+                // new RunCommand(() -> m_claw.setVoltage(5),m_claw)
+                // ))
+                // .onFalse(new LiftAndArmMove(m_lift, m_arm,
+                // Constants.LiftConstants.LiftHeight.kPositionResting,
+                // Constants.ArmConstants.ArmPostion.kPositionResting).alongWith(
+                // new RunCommand(() -> m_claw.setVoltage(0),m_claw)
+                // ));
 
 
                 //intake outake slow
@@ -334,14 +334,14 @@ public class RobotContainer {
                                         m_claw));
 
                         //arm go to processer
-                        m_manipulatorController.povDown().onTrue(
-                                (new LiftAndArmMove(m_lift, m_arm,
-                                Constants.LiftConstants.LiftHeight.kPositionResting,
-                                Constants.ArmConstants.ArmPostion.kPosistionProcesser)))  
-                                .onFalse(
-                                (new LiftAndArmMove(m_lift, m_arm,
-                                Constants.LiftConstants.LiftHeight.kPositionResting,
-                                Constants.ArmConstants.ArmPostion.kPositionResting)));
+                        // m_manipulatorController.povDown().onTrue(
+                        //         (new LiftAndArmMove(m_lift, m_arm,
+                        //         Constants.LiftConstants.LiftHeight.kPositionResting,
+                        //         Constants.ArmConstants.ArmPostion.kPosistionProcesser)))  
+                        //         .onFalse(
+                        //         (new LiftAndArmMove(m_lift, m_arm,
+                        //         Constants.LiftConstants.LiftHeight.kPositionResting,
+                        //         Constants.ArmConstants.ArmPostion.kPositionResting)));
 
                 //claw intake from ground
                              m_manipulatorController.b().onTrue(new RunCommand(
@@ -355,28 +355,36 @@ public class RobotContainer {
                                                                         m_claw).alongWith(new LiftAndArmMove(m_lift, m_arm,
                                                                         Constants.LiftConstants.LiftHeight.kPositionResting,
                                                                         Constants.ArmConstants.ArmPostion.kPositionResting)));
+
+                // claw outtake from ground (USE FOR WHEN ELEVATOR BROKEN)
+                m_manipulatorController.a().onTrue(new LiftAndArmMove(m_lift, m_arm, 
+                LiftConstants.LiftHeight.kPositionResting, 
+                Constants.ArmConstants.ArmPostion.kPosistionBarge))
+                        .onFalse(new LiftAndArmMove(m_lift, m_arm,
+                        Constants.LiftConstants.LiftHeight.kPositionResting,
+                        Constants.ArmConstants.ArmPostion.kPositionResting));
                 // fourbar intake then comeup and intake a little more
-                m_manipulatorController.a().onTrue(new RunCommand(
-                                () -> {m_fourBar.setPostion(
-                                                Constants.FourBarConstants.FourBarPostion.kPositionCoral);
-                                        m_intake.setVoltage(Constants.IntakeConstants.kIntakeVolts);},
-                                m_fourBar, m_intake)).onFalse(new RunCommand(
-                                        () -> {m_fourBar.setPostion(
-                                                Constants.FourBarConstants.FourBarPostion.kPositionResting);
-                                        m_intake.setVoltage(Constants.IntakeConstants.kIntakeVolts);},
-                                        m_fourBar, m_intake).withTimeout(.4).andThen(new RunCommand(
-                                                () -> {m_fourBar.setPostion(
-                                                        Constants.FourBarConstants.FourBarPostion.kPositionResting);
-                                                m_intake.setVoltage(0);},
-                                                m_fourBar, m_intake)));
-                // fourbar go to l1
-                m_manipulatorController.rightTrigger().onTrue(new RunCommand(
-                        () -> m_fourBar.setPostion(
-                        Constants.FourBarConstants.FourBarPostion.kPositionL1),
-                        m_fourBar)).onFalse(new RunCommand(
-                        () -> m_fourBar.setPostion(
-                        Constants.FourBarConstants.FourBarPostion.kPositionResting),
-                        m_fourBar));
+                // m_manipulatorController.a().onTrue(new RunCommand(
+                //                 () -> {m_fourBar.setPostion(
+                //                                 Constants.FourBarConstants.FourBarPostion.kPositionCoral);
+                //                         m_intake.setVoltage(Constants.IntakeConstants.kIntakeVolts);},
+                //                 m_fourBar, m_intake)).onFalse(new RunCommand(
+                //                         () -> {m_fourBar.setPostion(
+                //                                 Constants.FourBarConstants.FourBarPostion.kPositionResting);
+                //                         m_intake.setVoltage(Constants.IntakeConstants.kIntakeVolts);},
+                //                         m_fourBar, m_intake).withTimeout(.4).andThen(new RunCommand(
+                //                                 () -> {m_fourBar.setPostion(
+                //                                         Constants.FourBarConstants.FourBarPostion.kPositionResting);
+                //                                 m_intake.setVoltage(0);},
+                //                                 m_fourBar, m_intake)));
+                // // fourbar go to l1
+                // m_manipulatorController.rightTrigger().onTrue(new RunCommand(
+                //         () -> m_fourBar.setPostion(
+                //         Constants.FourBarConstants.FourBarPostion.kPositionL1),
+                //         m_fourBar)).onFalse(new RunCommand(
+                //         () -> m_fourBar.setPostion(
+                //         Constants.FourBarConstants.FourBarPostion.kPositionResting),
+                //         m_fourBar));
 
                 // m_manipulatorController.rightStick().onTrue(new LiftAndWristMove(m_lift,
                 // m_wrist,
